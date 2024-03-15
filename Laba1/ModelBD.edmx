@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DogPriutModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adopters">
+          <Key>
+            <PropertyRef Name="AdopterID" />
+          </Key>
+          <Property Name="AdopterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameAdopter" Type="varchar" MaxLength="50" />
+          <Property Name="SurnameAdopter" Type="varchar" MaxLength="50" />
+          <Property Name="MiddlenameAdopter" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="AddressAdopter" Type="varchar" MaxLength="255" />
+          <Property Name="AdoptionDate" Type="date" />
+          <Property Name="ID_Dog" Type="int" />
+        </EntityType>
+        <EntityType Name="Dogs">
+          <Key>
+            <PropertyRef Name="Dog_ID" />
+          </Key>
+          <Property Name="Dog_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameDog" Type="varchar" MaxLength="50" />
+          <Property Name="Breed" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Size" Type="varchar" MaxLength="15" />
+          <Property Name="ArrivalDate" Type="date" />
+          <Property Name="IsAdopted" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__Adopters__ID_Dog__4316F928">
+          <End Role="Dogs" Type="Self.Dogs" Multiplicity="0..1" />
+          <End Role="Adopters" Type="Self.Adopters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogs">
+              <PropertyRef Name="Dog_ID" />
+            </Principal>
+            <Dependent Role="Adopters">
+              <PropertyRef Name="ID_Dog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DogPriutModelContainer">
+          <EntitySet Name="Adopters" EntityType="Self.Adopters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dogs" EntityType="Self.Dogs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Adopters__ID_Dog__4316F928" Association="Self.FK__Adopters__ID_Dog__4316F928">
+            <End Role="Dogs" EntitySet="Dogs" />
+            <End Role="Adopters" EntitySet="Adopters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DogPriutModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adopters">
+          <Key>
+            <PropertyRef Name="AdopterID" />
+          </Key>
+          <Property Name="AdopterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameAdopter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SurnameAdopter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddlenameAdopter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AddressAdopter" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AdoptionDate" Type="DateTime" Precision="0" />
+          <Property Name="ID_Dog" Type="Int32" />
+          <NavigationProperty Name="Dogs" Relationship="Self.FK__Adopters__ID_Dog__4316F928" FromRole="Adopters" ToRole="Dogs" />
+        </EntityType>
+        <EntityType Name="Dogs">
+          <Key>
+            <PropertyRef Name="Dog_ID" />
+          </Key>
+          <Property Name="Dog_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameDog" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Breed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Size" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalDate" Type="DateTime" Precision="0" />
+          <Property Name="IsAdopted" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Adopters" Relationship="Self.FK__Adopters__ID_Dog__4316F928" FromRole="Dogs" ToRole="Adopters" />
+        </EntityType>
+        <Association Name="FK__Adopters__ID_Dog__4316F928">
+          <End Role="Dogs" Type="Self.Dogs" Multiplicity="0..1" />
+          <End Role="Adopters" Type="Self.Adopters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogs">
+              <PropertyRef Name="Dog_ID" />
+            </Principal>
+            <Dependent Role="Adopters">
+              <PropertyRef Name="ID_Dog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DogPriutEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adopters" EntityType="Self.Adopters" />
+          <EntitySet Name="Dogs" EntityType="Self.Dogs" />
+          <AssociationSet Name="FK__Adopters__ID_Dog__4316F928" Association="Self.FK__Adopters__ID_Dog__4316F928">
+            <End Role="Dogs" EntitySet="Dogs" />
+            <End Role="Adopters" EntitySet="Adopters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DogPriutModelContainer" CdmEntityContainer="DogPriutEntities">
+          <EntitySetMapping Name="Adopters">
+            <EntityTypeMapping TypeName="DogPriutModel.Adopters">
+              <MappingFragment StoreEntitySet="Adopters">
+                <ScalarProperty Name="AdopterID" ColumnName="AdopterID" />
+                <ScalarProperty Name="NameAdopter" ColumnName="NameAdopter" />
+                <ScalarProperty Name="SurnameAdopter" ColumnName="SurnameAdopter" />
+                <ScalarProperty Name="MiddlenameAdopter" ColumnName="MiddlenameAdopter" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="AddressAdopter" ColumnName="AddressAdopter" />
+                <ScalarProperty Name="AdoptionDate" ColumnName="AdoptionDate" />
+                <ScalarProperty Name="ID_Dog" ColumnName="ID_Dog" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dogs">
+            <EntityTypeMapping TypeName="DogPriutModel.Dogs">
+              <MappingFragment StoreEntitySet="Dogs">
+                <ScalarProperty Name="Dog_ID" ColumnName="Dog_ID" />
+                <ScalarProperty Name="NameDog" ColumnName="NameDog" />
+                <ScalarProperty Name="Breed" ColumnName="Breed" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="IsAdopted" ColumnName="IsAdopted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

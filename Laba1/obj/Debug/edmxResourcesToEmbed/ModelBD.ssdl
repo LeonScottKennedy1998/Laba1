@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище DogPriutModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Adopters">
+    <Key>
+      <PropertyRef Name="AdopterID" />
+    </Key>
+    <Property Name="AdopterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAdopter" Type="varchar" MaxLength="50" />
+    <Property Name="SurnameAdopter" Type="varchar" MaxLength="50" />
+    <Property Name="MiddlenameAdopter" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Phone" Type="varchar" MaxLength="20" />
+    <Property Name="AddressAdopter" Type="varchar" MaxLength="255" />
+    <Property Name="AdoptionDate" Type="date" />
+    <Property Name="ID_Dog" Type="int" />
+  </EntityType>
+  <EntityType Name="Dogs">
+    <Key>
+      <PropertyRef Name="Dog_ID" />
+    </Key>
+    <Property Name="Dog_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameDog" Type="varchar" MaxLength="50" />
+    <Property Name="Breed" Type="varchar" MaxLength="50" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+    <Property Name="Size" Type="varchar" MaxLength="15" />
+    <Property Name="ArrivalDate" Type="date" />
+    <Property Name="IsAdopted" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__Adopters__ID_Dog__4316F928">
+    <End Role="Dogs" Type="Self.Dogs" Multiplicity="0..1" />
+    <End Role="Adopters" Type="Self.Adopters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dogs">
+        <PropertyRef Name="Dog_ID" />
+      </Principal>
+      <Dependent Role="Adopters">
+        <PropertyRef Name="ID_Dog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище DogPriutModelContainer">
+    <EntitySet Name="Adopters" EntityType="Self.Adopters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dogs" EntityType="Self.Dogs" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Adopters__ID_Dog__4316F928" Association="Self.FK__Adopters__ID_Dog__4316F928">
+      <End Role="Dogs" EntitySet="Dogs" />
+      <End Role="Adopters" EntitySet="Adopters" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

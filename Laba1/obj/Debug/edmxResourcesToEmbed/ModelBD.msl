@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DogPriutModelContainer" CdmEntityContainer="DogPriutEntities">
+    <EntitySetMapping Name="Adopters">
+      <EntityTypeMapping TypeName="DogPriutModel.Adopters">
+        <MappingFragment StoreEntitySet="Adopters">
+          <ScalarProperty Name="AdopterID" ColumnName="AdopterID" />
+          <ScalarProperty Name="NameAdopter" ColumnName="NameAdopter" />
+          <ScalarProperty Name="SurnameAdopter" ColumnName="SurnameAdopter" />
+          <ScalarProperty Name="MiddlenameAdopter" ColumnName="MiddlenameAdopter" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="AddressAdopter" ColumnName="AddressAdopter" />
+          <ScalarProperty Name="AdoptionDate" ColumnName="AdoptionDate" />
+          <ScalarProperty Name="ID_Dog" ColumnName="ID_Dog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dogs">
+      <EntityTypeMapping TypeName="DogPriutModel.Dogs">
+        <MappingFragment StoreEntitySet="Dogs">
+          <ScalarProperty Name="Dog_ID" ColumnName="Dog_ID" />
+          <ScalarProperty Name="NameDog" ColumnName="NameDog" />
+          <ScalarProperty Name="Breed" ColumnName="Breed" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="IsAdopted" ColumnName="IsAdopted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
